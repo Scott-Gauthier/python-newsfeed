@@ -13,10 +13,10 @@ class Post(Base):
   created_at = Column(DateTime, default=datetime.now)
   updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
 
-  vote_count = column_property(
-    select((func.count(Vote.id))).join(Vote).filter(Vote.post_id == id)
-    .scalar_subquery()
-  )
+  #vote_count = column_property(
+  #  select((func.count(Vote.id))).join(Vote).filter(Vote.post_id == id)
+  #  .scalar_subquery()
+  #)
 
   user = relationship('User')
   comments = relationship('Comment', cascade='all,delete')
